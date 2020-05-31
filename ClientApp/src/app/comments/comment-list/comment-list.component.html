@@ -1,0 +1,20 @@
+<h1 id="tableLabel">Comments</h1>
+
+<p *ngIf="!comments"><em>Loading...</em></p>
+
+<table class='table' aria-labelledby="tableLabel" *ngIf="comments">
+    <thead>
+        <tr>
+            <th>Comment Text</th>
+            <th>Is Important</th>
+            <th>Task Id</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let comment of comments">
+            <td>{{ comment.text }}</td>
+            <td>{{ comment.important }}</td>
+            <td>{{ comment.taskId}}</td>
+        </tr>
+    </tbody>
+</table>

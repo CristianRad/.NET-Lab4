@@ -1,0 +1,15 @@
+<form class="form-group mt-5 col-12" [formGroup]="commentForm" (ngSubmit)="onSubmit()">
+    <div class="d-flex justify-content-start">
+        <label class="mr-3">
+            <input class="form-control" placeholder="Your comment" formControlName="text" autofocus required size="50">
+            <span *ngIf="errorMessages.Text" class="text-danger"><small>{{errorMessages.Text}}</small> </span>
+        </label>
+
+        <div class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" id="isImportant" formControlName="important">
+            <label class="custom-control-label" for="isImportant">Is Important</label>
+        </div>
+    </div>
+    <br>
+    <button class="btn btn-success" type="submit" [disabled]="!commentForm.valid">Update</button>
+</form>

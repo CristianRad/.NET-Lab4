@@ -1,0 +1,45 @@
+<div class="my-3">
+    <div class="container text-center">
+      <h2 class="text-secondary">Update Task</h2>
+  
+      <form class="form-group mt-5 col-10 mx-auto" [formGroup]="taskForm" (ngSubmit)="onUpdate()">
+        <div class="d-flex justify-content-between">
+          <label>Title
+            <input class="form-control" placeholder="" formControlName="title" autofocus required>
+            <span *ngIf="errorMessages.Title" class="text-danger"><small>{{errorMessages.Title}}</small></span>
+          </label>
+  
+          <label>Description
+            <input class="form-control" placeholder="" formControlName="description" required size="40">
+            <span *ngIf="errorMessages.Description" class="text-danger"> {{errorMessages.Description}} </span>
+          </label>
+  
+          <label> Deadline
+            <input class="form-control" type="datetime-local" formControlName="deadline" required>
+            <span *ngIf="errorMessages.Deadline" class="text-danger"> {{errorMessages.Deadline}} </span>
+          </label>
+        </div>
+  
+        <div class="input-group mt-3">
+          <div class="input-group-prepend">
+            <label class="input-group-text" for="inputGroupSelect01">Importance</label>
+          </div>
+          <select class="custom-select" id="inputGroupSelect01" formControlName="importance" required>
+            <option *ngFor="let importance of importanceTypes" [ngValue]="importance.name">{{importance.name}}</option>
+          </select>
+        </div>
+  
+        <div class="input-group mt-3">
+          <div class="input-group-prepend">
+            <label class="input-group-text" for="inputGroupSelect01">State</label>
+          </div>
+          <select class="custom-select" id="inputGroupSelect01" formControlName="state" required>
+            <option *ngFor="let state of stateTypes" [ngValue]="state.name">{{state.name}}</option>
+          </select>
+        </div>
+        <br>
+        <button (click)="goBack()" class="btn btn-secondary mr-5">Back</button>
+        <button class="btn btn-success" type="submit" [disabled]="!taskForm.valid">Update</button>
+      </form>
+    </div>
+  </div>
